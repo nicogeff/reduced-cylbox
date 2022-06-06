@@ -1,0 +1,16 @@
+**/app/devsec/nbproject/private/*
+**/lib/devsec/nbproject/private/*
+**/nbproject/private/*
+**/nbproject/Package-Debug.bash
+**/nbproject/Package-Release.bash
+#**/nbproject/Makefile-Debug.mk
+#**/nbproject/Makefile-Release.mk
+#**/nbproject/Makefile-impl.mk
+#**/nbproject/Makefile-variables.mk
+**/build
+**/dist
+**/.dep.inc
+azerty_3-party/
+build/
+dist/
+.dep.inc

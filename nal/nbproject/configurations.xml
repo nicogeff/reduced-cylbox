@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>inc/nal_common.h</itemPath>
+      <itemPath>inc/nal_ip.h</itemPath>
+      <itemPath>inc/nal_libc.h</itemPath>
+      <itemPath>inc/nal_mem.h</itemPath>
+      <itemPath>inc/nal_net.h</itemPath>
+      <itemPath>inc/nal_rtos.h</itemPath>
+      <itemPath>inc/nal_stor.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>plf/linux/inc/nal_config.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/ip/nal_ip_bsd_4_3.c</itemPath>
+      <itemPath>src/ip/nal_ip_bsd_4_3.h</itemPath>
+      <itemPath>src/libc/nal_libc_posix.c</itemPath>
+      <itemPath>src/mem/nal_mem_alloc.c</itemPath>
+      <itemPath>src/mem/nal_mem_alloc.h</itemPath>
+      <itemPath>src/net/nal_net_linux.c</itemPath>
+      <itemPath>src/rtos/nal_rtos_posix.c</itemPath>
+      <itemPath>src/rtos/nal_rtos_posix.h</itemPath>
+      <itemPath>src/stor/nal_stor_stdio.c</itemPath>
+      <itemPath>src/stor/nal_stor_stdio.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f3"
+                     displayName="nal_libc_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/nal_libc_tests/nal_libc_main.c</itemPath>
+        <itemPath>tests/nal_libc_tests/nal_libc_tests.c</itemPath>
+        <itemPath>tests/nal_libc_tests/nal_libc_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="nal_net_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/nal_net_tests/nal_net_main.c</itemPath>
+        <itemPath>tests/nal_net_tests/nal_net_tests.c</itemPath>
+        <itemPath>tests/nal_net_tests/nal_net_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="nal_rtos_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/nal_rtos_tests/nal_rtos_main.c</itemPath>
+        <itemPath>tests/nal_rtos_tests/nal_rtos_mutexes_tests.c</itemPath>
+        <itemPath>tests/nal_rtos_tests/nal_rtos_mutexes_tests.h</itemPath>
+        <itemPath>tests/nal_rtos_tests/nal_rtos_semaphores_tests.c</itemPath>
+        <itemPath>tests/nal_rtos_tests/nal_rtos_semaphores_tests.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <commandlineTool>gcc</commandlineTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>src/ip</pElem>
+            <pElem>src/libc</pElem>
+            <pElem>src/mem</pElem>
+            <pElem>src/net</pElem>
+            <pElem>src/rtos</pElem>
+            <pElem>src/stor</pElem>
+            <pElem>plf/linux/inc</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles">
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>dist/Debug/GNU-Linux</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerOptionItem>-lrt</linkerOptionItem>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <item path="inc/nal_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_ip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_libc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_net.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_rtos.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_stor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/nal_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ip/nal_ip_bsd_4_3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ip/nal_ip_bsd_4_3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/libc/nal_libc_posix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mem/nal_mem_alloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mem/nal_mem_alloc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/net/nal_net_linux.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/rtos/nal_rtos_posix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/rtos/nal_rtos_posix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/stor/nal_stor_stdio.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/stor/nal_stor_stdio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_mutexes_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_mutexes_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_semaphores_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_semaphores_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>0</developmentMode>
+          <commandlineTool>gcc</commandlineTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>src/ip</pElem>
+            <pElem>src/libc</pElem>
+            <pElem>src/mem</pElem>
+            <pElem>src/net</pElem>
+            <pElem>src/rtos</pElem>
+            <pElem>src/stor</pElem>
+            <pElem>plf/linux/inc</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <item path="inc/nal_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_ip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_libc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_mem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_net.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_rtos.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/nal_stor.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/nal_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/ip/nal_ip_bsd_4_3.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/ip/nal_ip_bsd_4_3.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/libc/nal_libc_posix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mem/nal_mem_alloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/mem/nal_mem_alloc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/net/nal_net_linux.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/rtos/nal_rtos_posix.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/rtos/nal_rtos_posix.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/stor/nal_stor_stdio.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/stor/nal_stor_stdio.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_libc_tests/nal_libc_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_net_tests/nal_net_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_mutexes_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_mutexes_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_semaphores_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/nal_rtos_tests/nal_rtos_semaphores_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

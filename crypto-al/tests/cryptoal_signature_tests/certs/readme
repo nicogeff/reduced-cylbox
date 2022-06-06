@@ -1,0 +1,4 @@
+For this test, local certificate as been copied in ca_tool, and another certificate is in ca_root.
+So Signing/verifying a buufer will be ok if we use ca_tool certificate and Failing with ca_root certificate.
+
+Of course this structure of CA IS Ko, this is just a shortcut for tests.

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>inc/cryptoal_base64.h</itemPath>
+      <itemPath>inc/cryptoal_certificate.h</itemPath>
+      <itemPath>inc/cryptoal_common.h</itemPath>
+      <itemPath>inc/cryptoal_hash.h</itemPath>
+      <itemPath>inc/cryptoal_mgt.h</itemPath>
+      <itemPath>inc/cryptoal_rand.h</itemPath>
+      <itemPath>inc/cryptoal_signature.h</itemPath>
+      <itemPath>inc/cryptoal_tls.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>tests/certs/local/box.cert.pem</itemPath>
+      <itemPath>tests/certs/local/box.key.pem</itemPath>
+      <itemPath>plf/linux/inc/cryptoal_config.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/cryptoal_base64_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_base64_openssl.c</itemPath>
+      <itemPath>src/cryptoal_certificate_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_hash_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_hash_openssl.c</itemPath>
+      <itemPath>src/cryptoal_mgt.c</itemPath>
+      <itemPath>src/cryptoal_rand_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_rand_openssl.c</itemPath>
+      <itemPath>src/cryptoal_signature_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_signature_openssl.c</itemPath>
+      <itemPath>src/cryptoal_tls_mbedtls.c</itemPath>
+      <itemPath>src/cryptoal_tls_openssl.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="cryptoal_base64_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_base64_tests/cryptoal_base64_main.c</itemPath>
+        <itemPath>tests/cryptoal_base64_tests/cryptoal_base64_tests.c</itemPath>
+        <itemPath>tests/cryptoal_base64_tests/cryptoal_base64_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5"
+                     displayName="cryptoal_certificate_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_certificate_tests/cryptoal_certificate_main.c</itemPath>
+        <itemPath>tests/cryptoal_certificate_tests/cryptoal_certificate_tests.c</itemPath>
+        <itemPath>tests/cryptoal_certificate_tests/cryptoal_certificate_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="cryptoal_hash_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_hash_tests/cryptoal_hash_main.c</itemPath>
+        <itemPath>tests/cryptoal_hash_tests/cryptoal_hash_tests.c</itemPath>
+        <itemPath>tests/cryptoal_hash_tests/cryptoal_hash_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3"
+                     displayName="cryptoal_rand_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_rand_tests/cryptoal_rand_main.c</itemPath>
+        <itemPath>tests/cryptoal_rand_tests/cryptoal_rand_tests.c</itemPath>
+        <itemPath>tests/cryptoal_rand_tests/cryptoal_rand_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f4"
+                     displayName="cryptoal_signature_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_signature_tests/cryptoal_signature_main.c</itemPath>
+        <itemPath>tests/cryptoal_signature_tests/cryptoal_signature_tests.c</itemPath>
+        <itemPath>tests/cryptoal_signature_tests/cryptoal_signature_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f6"
+                     displayName="cryptoal_tls_test"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/cryptoal_tls_tests/cryptoal_tls_main.c</itemPath>
+        <itemPath>tests/cryptoal_tls_tests/cryptoal_tls_tests.c</itemPath>
+        <itemPath>tests/cryptoal_tls_tests/cryptoal_tls_tests.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>plf/linux/inc</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../3-party/mbedtls/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles">
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs openssl`</linkerOptionItem>
+            <linkerLibFileItem>../3-party/mbedtls/library/libmbedtls.a</linkerLibFileItem>
+            <linkerLibFileItem>../3-party/mbedtls/library/libmbedx509.a</linkerLibFileItem>
+            <linkerLibFileItem>../3-party/mbedtls/library/libmbedcrypto.a</linkerLibFileItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../tools"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../tools"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libtools.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../nal"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../nal"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libnal.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
+            <linkerOptionItem>-lrt</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="inc/cryptoal_base64.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_certificate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_hash.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_mgt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_rand.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_signature.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_tls.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/cryptoal_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/cryptoal_base64_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_base64_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_certificate_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_hash_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_hash_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_mgt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_rand_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_rand_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_signature_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_signature_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_tls_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_tls_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/certs/local/box.cert.pem" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/certs/local/box.key.pem" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>plf/linux/inc</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../3-party/mbedtls/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f4">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f4</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f5">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f5</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f6">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f6</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <item path="inc/cryptoal_base64.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_certificate.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_common.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_hash.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_mgt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_rand.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_signature.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/cryptoal_tls.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/cryptoal_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/cryptoal_base64_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_base64_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_certificate_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_hash_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_hash_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_mgt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_rand_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_rand_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_signature_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_signature_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_tls_mbedtls.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/cryptoal_tls_openssl.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/certs/local/box.cert.pem" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/certs/local/box.key.pem" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_base64_tests/cryptoal_base64_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_certificate_tests/cryptoal_certificate_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_hash_tests/cryptoal_hash_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_rand_tests/cryptoal_rand_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_signature_tests/cryptoal_signature_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/cryptoal_tls_tests/cryptoal_tls_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

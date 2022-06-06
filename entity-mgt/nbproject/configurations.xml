@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>inc/entmgt_configure.h</itemPath>
+      <itemPath>inc/entmgt_initialize.h</itemPath>
+      <itemPath>inc/entmgt_start.h</itemPath>
+      <itemPath>inc/entmgt_stop.h</itemPath>
+      <itemPath>inc/entmgt_target.h</itemPath>
+      <itemPath>inc/entmgt_utils.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>resource/entmgt_factory_file_conf.h</itemPath>
+      <itemPath>resource/entmgt_factory_file_rbac.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/entmgt_configure.c</itemPath>
+      <itemPath>src/entmgt_initialize.c</itemPath>
+      <itemPath>src/entmgt_launcher.c</itemPath>
+      <itemPath>src/entmgt_start.c</itemPath>
+      <itemPath>src/entmgt_stop.c</itemPath>
+      <itemPath>src/entmgt_utils.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>resource</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../nal/src/net</pElem>
+            <pElem>../nal/src/ip</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../crypto-al/plf/linux/inc</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../3-party/mbedtls/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="inc/entmgt_configure.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_initialize.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_start.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_stop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_target.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/entmgt_factory_file_conf.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="resource/entmgt_factory_file_rbac.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/entmgt_configure.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_initialize.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_launcher.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_start.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_stop.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>resource</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../nal/src/net</pElem>
+            <pElem>../nal/src/ip</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../crypto-al/plf/linux/inc</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../3-party/mbedtls/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="inc/entmgt_configure.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_initialize.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_start.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_stop.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_target.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/entmgt_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="resource/entmgt_factory_file_conf.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="resource/entmgt_factory_file_rbac.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="src/entmgt_configure.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_initialize.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_launcher.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_start.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_stop.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/entmgt_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>inc/webserver_error.h</itemPath>
+      <itemPath>inc/webserver_mcast.h</itemPath>
+      <itemPath>inc/webserver_mgt.h</itemPath>
+      <itemPath>inc/webserver_operations.h</itemPath>
+      <itemPath>inc/webserver_restful.h</itemPath>
+      <itemPath>inc/webserver_utils.h</itemPath>
+      <itemPath>inc/webserver_www.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <logicalFolder name="www" displayName="www" projectFiles="true">
+        <itemPath>www/index.html</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/webserver_mcast.c</itemPath>
+      <itemPath>src/webserver_mgt.c</itemPath>
+      <itemPath>src/webserver_operations.c</itemPath>
+      <itemPath>src/webserver_restful.c</itemPath>
+      <itemPath>src/webserver_utils.c</itemPath>
+      <itemPath>src/webserver_www.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>www</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../crypto-al/plf/linux/inc</pElem>
+            <pElem>../nal/src/net</pElem>
+            <pElem>../nal/src/ip</pElem>
+            <pElem>../entity-mgt/inc</pElem>
+            <pElem>../3-party/civetweb/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="inc/webserver_error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_mcast.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_mgt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_operations.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_restful.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_www.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/webserver_mcast.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_mgt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_operations.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_restful.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_www.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="www/index.html" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>../common/inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/rtos</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+            <pElem>../tools/inc</pElem>
+            <pElem>../crypto-al/inc</pElem>
+            <pElem>../crypto-al/plf/linux/inc</pElem>
+            <pElem>../nal/src/net</pElem>
+            <pElem>../nal/src/ip</pElem>
+            <pElem>../entity-mgt/inc</pElem>
+            <pElem>../3-party/civetweb/include</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="inc/webserver_error.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_mcast.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_mgt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_operations.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_restful.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_utils.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/webserver_www.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/webserver_mcast.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_mgt.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_operations.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_restful.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_utils.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/webserver_www.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="www/index.html" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,181 @@
+image: box-ubuntu-docker-image:latest
+
+stages:
+    - build
+    - unit-tests
+    - system-test
+    - static-analysis
+
+build:
+    tags:
+    - Raspberry-Pi-OS
+    stage: build
+    before_script:
+    #- apt clean
+    #- apt update
+    #- apt --yes install build-essential binutils gcc git gpiod libgpiod-dev pkg-config
+    script:
+    - cd /builds/devsec/box/3-party
+    - /bin/sh get-mbedtls.sh
+    - /bin/sh get-civetweb.sh
+    - echo "Building complete appli"
+    - cd /builds/devsec/box/solutions/app/devsec/
+    - make all
+    - echo "Get size of code (.text section of executable)"
+    - TEXT_SIZE=`objdump -x  /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|cut -d' ' -f12|grep 0|sed 's/^0*//g'`
+    - echo "Hexa size of code in Executable (.text section, in hexa) = 0x"$TEXT_SIZE"  or $((0x$TEXT_SIZE/1024)) Kbytes"; echo ""
+    - echo "Building module nal"
+    - cd /builds/devsec/box/nal/
+    - make all
+    - echo "Building module tools"
+    - cd /builds/devsec/box/tools/
+    - make all
+    - echo "Building module crypto-al"
+    - cd /builds/devsec/box/crypto-al/
+    - make all
+    - echo "Building module entity-mgt"
+    - cd /builds/devsec/box/entity-mgt/
+    - make all
+    - echo "Building module web-server"
+    - cd /builds/devsec/box/web-server/
+    - make all
+    - echo "Building module auth-rbac"
+    - cd /builds/devsec/box/auth-rbac/
+    - make all
+    - echo "ENTMGT Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i  entmgt |cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size entmgt = "$((($SUM)/1024))" Kbytes"
+    - echo "NAL Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i " nal_"|cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size NAL = "$((($SUM)/1024))" Kbytes"
+    - echo "TOOLS Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i tools|cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size TOOLS = "$((($SUM)/1024))" Kbytes"
+    - echo "CRYPTO-AL Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i cryptoal|cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size CRYPTO-AL = "$((($SUM)/1024))" Kbytes"
+    - echo "AUTH-RBAC Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i " auth_"|cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size AUTH-RBAC = "$((($SUM)/1024))" Kbytes"
+    - echo "WEB-SERV Module size :"
+    - SUM=`objdump -x /builds/devsec/box/solutions/app/devsec/dist/Release/GNU-Linux/devsec|grep .text|grep -i webserv|cut -f2|cut -d' ' -f1|sed 's/^/0x/g'|sed 's/$/+/g'|tr '\n' ' '|sed 's/$/0/g'|sed 's/ //g'`
+    - echo "Size WEB-SERV = "$((($SUM)/1024))" Kbytes"
+
+test:
+    tags:
+    - Raspberry-Pi-OS
+    stage: unit-tests
+    before_script:
+    script:
+    - cd /builds/devsec/box/3-party
+    - /bin/sh get-mbedtls.sh
+    - /bin/sh get-civetweb.sh
+    - echo "Loading test for module nal"
+    - cd /builds/devsec/box/nal/
+    - make test
+    - echo "Loading test for module tools"
+    - cd /builds/devsec/box/tools/
+    - make test
+    - echo "Loading test for module auth-rbac"
+    - cd /builds/devsec/box/auth-rbac/
+    - make test
+    - echo "Loading test for module crypto-al"
+    - cd /builds/devsec/box/crypto-al/
+    - make test
+
+test-system-and-memory:
+    tags:
+    - Raspberry-Pi-OS
+    stage: system-test
+    before_script:
+    script:
+    - cd /builds/devsec/box/3-party
+    - /bin/sh get-mbedtls.sh
+    - /bin/sh get-civetweb.sh
+    - echo "Building complete appli"
+    - cd /builds/devsec/box/solutions/app/devsec/
+    - make CONF=Debug
+# here provide good certificates, because otherwise devsec (under valgrind) is very long to make new ones (few minutes)
+    - rm -rf ~/.box/
+    - mkdir ~/.box/
+    - cp -Rf  ../../../crypto-al/tests/cryptoal_tls_tests/good/certs/   ~/.box/
+# lancement appli
+    - valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./dist/Debug/GNU-Linux/devsec &
+    #- /builds/devsec/box/solutions/app/devsec/dist/Debug/GNU-Linux/devsec &
+    - sleep 10
+#create session #1
+    - SESSID=`curl -s  http://127.0.0.1:9443/api/v1/create-session| cut -s -d'"' -f4`
+    - echo "SESSION ID = "$SESSID
+    - sleep 2
+    - if [ $SESSID != "" ]; then echo "Session Ok"; else echo "Session failed" && ls /tototiti; fi
+# authenticate session
+    - AUTHENT=`curl -s -d "id=$SESSID&login=installer&password=6a51c8231013a106bed56fd2d6084f07851de165bccafec5672dbd24d623fa96" http://127.0.0.1:9443/api/v1/sign-in|grep "\"result\""|cut -d' ' -f3`
+    - if [ $AUTHENT == "0" ]; then echo "Authentication Session Ok"; else echo "Authent Session failed" && ls /tototiti; fi
+    - sleep 2
+# change Rbac
+    - CHANGE=`curl -s -d "id=$SESSID&data=eyJyYmFjIjp7ImF1dGhvcml6YXRpb25zIjpbImdsYW5kZXIiLCJmdXJldGVyIiwiY2hhbmdlLXJiYWMiXSwiZ2VuZXJhdGVkVmVyc2lvbiI6IjdmZjdjODQ1NjNhYzkzNWE2OWZhZTQ3ZTY2Y2JkMGQ2ZDFkNWRjNzJkYjhkYWQzZGFmZGUzMmU2ODBlOTgyZjRhZThlZGJhOTg0ODJiYThhZDk3ZDU4ZGIzNTNjMWFlMjFlOThiMTBlNDdjNjM2YThkMmRjZmZjZDZiYWY4ZWZiIiwicm9sZXMiOlt7ImF1dGhvci1pZHgiOlswXSwicm9sZSI6ImdsYW5kZXVyIn0seyJhdXRob3ItaWR4IjpbMV0sInJvbGUiOiJmcmVpbmVyIn0seyJhdXRob3ItaWR4IjpbMl0sInJvbGUiOiJpbnN0YWxsYXRpb24ifV0sInVzZXJzIjpbeyJoYXNoZWRQYXNzd29yZCI6IjMxZjdhNjVlMzE1NTg2YWMxOThiZDc5OGI2NjI5Y2U0OTAzZDA4OTk0NzZkNTc0MWE5ZjMyZTJlNTIxYjZhNjYiLCJpbmFjdGlmIjp0cnVlLCJyb2xlLWlkeCI6WzBdLCJ1c2VyIjoidG90byJ9LHsiaGFzaGVkUGFzc3dvcmQiOiI5ZWZhYTIyOWM0ZDY1YTY1OTE0ODc5YjI1OGJlZDRlZjk0MGI3YThjNjA1NDkxMWMwZDQ3YzEyZTA2OTkxZGM4IiwiaW5hY3RpZiI6dHJ1ZSwicm9sZS1pZHgiOlsxXSwidXNlciI6ImNsYW1wYWluIn0seyJoYXNoZWRQYXNzd29yZCI6IjU1OWFlYWQwODI2NGQ1Nzk1ZDM5MDk3MThjZGQwNWFiZDQ5NTcyZTg0ZmU1NTU5MGVlZjMxYTg4YTA4ZmRmZmQiLCJpbmFjdGlmIjpmYWxzZSwicm9sZS1pZHgiOlsyXSwidXNlciI6Imluc3RhbGxlciJ9XSwidmVyc2lvbiI6MX19" http://127.0.0.1:9443/api/v1/change-rbac|grep "\"result\""|cut -d' ' -f3`
+    - echo $CHANGE
+    - if [ $CHANGE == "0" ]; then echo "Changing Rbac Ok"; else echo "Failed to change Rbac" && ls /tototiti; fi
+    - sleep 2
+#call unknown service
+    - RES=`curl -s  http://127.0.0.1:9443/api/v1/create-nimportequoi| cut -s -d'"' -f4`
+    - if [ $RES != "" ]; then echo "calling unknow service should raise an error" && ls /tototiti; fi
+    - sleep 1
+#create session #2
+    - SESS2=`curl -s  http://127.0.0.1:9443/api/v1/create-session| cut -s -d'"' -f4`
+    - echo "SESSION ID 2 = "$SESS2
+    - if [ $SESS2 == "" ]; then echo "Session 2 failed" && ls /tototiti; fi
+    - if [ $SESS2 == $SESSID ]; then echo "Session 2 identical so failed " && ls /tototiti; fi
+    - sleep 3
+# authenticate session 2 with bad password, then bad login then bad session id, then all good
+    - AUTHENT2=`curl -s -d "id=$SESS2&login=installer&password=559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffe" http://127.0.0.1:9443/api/v1/sign-in|grep "\"result\""|cut -d' ' -f3`
+    - if [ $AUTHENT2 == "0" ]; then echo "Authent Session should fail" && ls /tototiti; fi
+    - sleep 1
+    - AUTHENT2=`curl -s -d "id=$SESS2&login=desinstaller&password=559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd" http://127.0.0.1:9443/api/v1/sign-in|grep "\"result\""|cut -d' ' -f3`
+    - if [ $AUTHENT2 == "0" ]; then echo "Authent Session should fail" && ls /tototiti; fi
+    - sleep 1
+    - AUTHENT2=`curl -s -d "id=vhtnc56&login=installer&password=559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd" http://127.0.0.1:9443/api/v1/sign-in|grep "\"result\""|cut -d' ' -f3`
+    - if [ $AUTHENT2 == "0" ]; then echo "Authent Session should fail" && ls /tototiti; fi
+    - sleep 1
+    - AUTHENT2=`curl -s -d "id=$SESS2&login=installer&password=559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd" http://127.0.0.1:9443/api/v1/sign-in|grep "\"result\""|cut -d' ' -f3`
+    - if [ $AUTHENT2 != "0" ]; then echo "Authent Session should succed" && ls /tototiti; fi
+    - sleep 1
+# change again Rbac as previous time
+    - CHANGE=`curl -s -d "id=$SESS2&data=eyJyYmFjIjp7ImF1dGhvcml6YXRpb25zIjpbImdsYW5kZXIiLCJmdXJldGVyIiwiY2hhbmdlLXJiYWMiXSwiZ2VuZXJhdGVkVmVyc2lvbiI6IjdmZjdjODQ1NjNhYzkzNWE2OWZhZTQ3ZTY2Y2JkMGQ2ZDFkNWRjNzJkYjhkYWQzZGFmZGUzMmU2ODBlOTgyZjRhZThlZGJhOTg0ODJiYThhZDk3ZDU4ZGIzNTNjMWFlMjFlOThiMTBlNDdjNjM2YThkMmRjZmZjZDZiYWY4ZWZiIiwicm9sZXMiOlt7ImF1dGhvci1pZHgiOlswXSwicm9sZSI6ImdsYW5kZXVyIn0seyJhdXRob3ItaWR4IjpbMV0sInJvbGUiOiJmcmVpbmVyIn0seyJhdXRob3ItaWR4IjpbMl0sInJvbGUiOiJpbnN0YWxsYXRpb24ifV0sInVzZXJzIjpbeyJoYXNoZWRQYXNzd29yZCI6IjMxZjdhNjVlMzE1NTg2YWMxOThiZDc5OGI2NjI5Y2U0OTAzZDA4OTk0NzZkNTc0MWE5ZjMyZTJlNTIxYjZhNjYiLCJpbmFjdGlmIjp0cnVlLCJyb2xlLWlkeCI6WzBdLCJ1c2VyIjoidG90byJ9LHsiaGFzaGVkUGFzc3dvcmQiOiI5ZWZhYTIyOWM0ZDY1YTY1OTE0ODc5YjI1OGJlZDRlZjk0MGI3YThjNjA1NDkxMWMwZDQ3YzEyZTA2OTkxZGM4IiwiaW5hY3RpZiI6dHJ1ZSwicm9sZS1pZHgiOlsxXSwidXNlciI6ImNsYW1wYWluIn0seyJoYXNoZWRQYXNzd29yZCI6IjU1OWFlYWQwODI2NGQ1Nzk1ZDM5MDk3MThjZGQwNWFiZDQ5NTcyZTg0ZmU1NTU5MGVlZjMxYTg4YTA4ZmRmZmQiLCJpbmFjdGlmIjpmYWxzZSwicm9sZS1pZHgiOlsyXSwidXNlciI6Imluc3RhbGxlciJ9XSwidmVyc2lvbiI6MX19" http://127.0.0.1:9443/api/v1/change-rbac|grep "\"result\""|cut -d' ' -f3`
+    - echo $CHANGE
+    - if [ $CHANGE == "0" ]; then echo "Changing again Rbac Ok"; else echo "Failed to change Rbac" && ls /tototiti; fi
+    - sleep 23
+# change again Rbac but too late, session is dead 20 seconds after last authentication
+    - CHANGE=`curl -s -d "id=$SESS2&data=eyJyYmFjIjp7ImF1dGhvcml6YXRpb25zIjpbImdsYW5kZXIiLCJmdXJldGVyIiwiY2hhbmdlLXJiYWMiXSwiZ2VuZXJhdGVkVmVyc2lvbiI6IjdmZjdjODQ1NjNhYzkzNWE2OWZhZTQ3ZTY2Y2JkMGQ2ZDFkNWRjNzJkYjhkYWQzZGFmZGUzMmU2ODBlOTgyZjRhZThlZGJhOTg0ODJiYThhZDk3ZDU4ZGIzNTNjMWFlMjFlOThiMTBlNDdjNjM2YThkMmRjZmZjZDZiYWY4ZWZiIiwicm9sZXMiOlt7ImF1dGhvci1pZHgiOlswXSwicm9sZSI6ImdsYW5kZXVyIn0seyJhdXRob3ItaWR4IjpbMV0sInJvbGUiOiJmcmVpbmVyIn0seyJhdXRob3ItaWR4IjpbMl0sInJvbGUiOiJpbnN0YWxsYXRpb24ifV0sInVzZXJzIjpbeyJoYXNoZWRQYXNzd29yZCI6IjMxZjdhNjVlMzE1NTg2YWMxOThiZDc5OGI2NjI5Y2U0OTAzZDA4OTk0NzZkNTc0MWE5ZjMyZTJlNTIxYjZhNjYiLCJpbmFjdGlmIjp0cnVlLCJyb2xlLWlkeCI6WzBdLCJ1c2VyIjoidG90byJ9LHsiaGFzaGVkUGFzc3dvcmQiOiI5ZWZhYTIyOWM0ZDY1YTY1OTE0ODc5YjI1OGJlZDRlZjk0MGI3YThjNjA1NDkxMWMwZDQ3YzEyZTA2OTkxZGM4IiwiaW5hY3RpZiI6dHJ1ZSwicm9sZS1pZHgiOlsxXSwidXNlciI6ImNsYW1wYWluIn0seyJoYXNoZWRQYXNzd29yZCI6IjU1OWFlYWQwODI2NGQ1Nzk1ZDM5MDk3MThjZGQwNWFiZDQ5NTcyZTg0ZmU1NTU5MGVlZjMxYTg4YTA4ZmRmZmQiLCJpbmFjdGlmIjpmYWxzZSwicm9sZS1pZHgiOlsyXSwidXNlciI6Imluc3RhbGxlciJ9XSwidmVyc2lvbiI6MX19" http://127.0.0.1:9443/api/v1/change-rbac|grep "\"result\""|cut -d' ' -f3`
+    - if [ $CHANGE == "0" ]; then echo "Ko, Changing Rbac too late should fail" && ls /tototiti; fi
+    - sleep 2
+    - socat - ~/.box/stop_socket
+    - sleep 4
+    - echo ""; echo ""; echo ""
+    - cat valgrind-out.txt
+    - echo ""
+
+static-test:
+    tags:
+    - Raspberry-Pi-OS
+    stage: static-analysis
+    before_script:
+    script:
+    - cd /builds/devsec/box
+    - echo "cppcheck Checking errors in source code"
+    - cppcheck --enable=all  `find -name *.c|grep -v "tests\/"` > cppcheck.txt 2>&1
+    - set +e
+    - ERROR=`grep  " error:" cppcheck.txt | wc -l`
+    - WARNING=`grep  " warning:" cppcheck.txt | wc -l`
+    - INFO=`grep  " information:" cppcheck.txt | wc -l`
+    - NOTE=`grep  " note:" cppcheck.txt | wc -l`
+    - STYLE=`grep  " style:" cppcheck.txt | wc -l`
+    - set -e
+# Only error and warning are fatal:
+    - if [ $ERROR != 0 ]; then echo "Ko static analysis gives some errors" && ls/tototiti; fi
+    - if [ $WARNING != 0 ]; then echo "Ko static analysis gives some warnings" && ls/tototiti; fi
+    #- if [ $INFO != 0 ]; then echo "Ko static analysis gives some information" && ls/tototiti; fi
+    #- if [ $NOTE != 0 ]; then echo "Ko static analysis gives some notes" && ls/tototiti; fi
+    #- if [ $STYLE != 0 ]; then echo "Ko static analysis gives some styles" && ls/tototiti; fi
+    - echo "End static analysis"
+

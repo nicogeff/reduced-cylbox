@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>inc/tools_chainedList.h</itemPath>
+      <itemPath>inc/tools_console.h</itemPath>
+      <itemPath>inc/tools_conversion.h</itemPath>
+      <itemPath>inc/tools_fileManip.h</itemPath>
+      <itemPath>inc/tools_parserJson.h</itemPath>
+      <itemPath>inc/tools_parserJsonTools.h</itemPath>
+      <itemPath>inc/tools_strManip.h</itemPath>
+      <itemPath>inc/tools_timeManip.h</itemPath>
+      <itemPath>inc/tools_trace.h</itemPath>
+      <itemPath>inc/tools_type.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>plf/linux/inc/tools_config.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>src/tools_chainedList.c</itemPath>
+      <itemPath>src/tools_console.c</itemPath>
+      <itemPath>src/tools_conversion.c</itemPath>
+      <itemPath>src/tools_fileManip.c</itemPath>
+      <itemPath>src/tools_parserJson.c</itemPath>
+      <itemPath>src/tools_parserJsonTools.c</itemPath>
+      <itemPath>src/tools_strManip.c</itemPath>
+      <itemPath>src/tools_timeManip.c</itemPath>
+      <itemPath>src/tools_trace.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f3"
+                     displayName="tools_chainedList_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/tools_chainedList_tests/tools_chainedList_main.c</itemPath>
+        <itemPath>tests/tools_chainedList_tests/tools_chainedList_tests.c</itemPath>
+        <itemPath>tests/tools_chainedList_tests/tools_chainedList_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2"
+                     displayName="tools_parserJson_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/tools_parserJson_tests/tools_parserJsonTools_tests.c</itemPath>
+        <itemPath>tests/tools_parserJson_tests/tools_parserJsonTools_tests.h</itemPath>
+        <itemPath>tests/tools_parserJson_tests/tools_parserJson_main.c</itemPath>
+        <itemPath>tests/tools_parserJson_tests/tools_parserJson_tests.c</itemPath>
+        <itemPath>tests/tools_parserJson_tests/tools_parserJson_tests.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1"
+                     displayName="tools_strManip_tests"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/tools_strManip_tests/tools_strManip_tests.c</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles">
+        <cTool>
+          <incDir>
+            <pElem>inc</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../nal"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../nal"
+                            BC="${MAKE}  -f Makefile CONF=Debug"
+                            CC="${MAKE}  -f Makefile CONF=Debug clean"
+                            OP="${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libnal.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <item path="inc/tools_chainedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_console.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_conversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_fileManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_parserJson.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_parserJsonTools.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_strManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_timeManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_trace.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_type.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/tools_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tools_chainedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_console.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_conversion.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_fileManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_parserJson.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_parserJsonTools.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_strManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_timeManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_trace.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJsonTools_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJsonTools_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_strManip_tests/tools_strManip_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>inc</pElem>
+            <pElem>../nal/inc</pElem>
+            <pElem>../nal/src/stor</pElem>
+            <pElem>../nal/plf/linux/inc</pElem>
+          </incDir>
+          <commandLine>-fPIC</commandLine>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <folder path="TestFiles/f1">
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+          <linkerLibItems>
+            <linkerOptionItem>-lcunit</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f2">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f2</output>
+        </linkerTool>
+      </folder>
+      <folder path="TestFiles/f3">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f3</output>
+        </linkerTool>
+      </folder>
+      <item path="inc/tools_chainedList.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_console.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_conversion.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_fileManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_parserJson.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_parserJsonTools.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_strManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_timeManip.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_trace.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="inc/tools_type.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="plf/linux/inc/tools_config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="src/tools_chainedList.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_console.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_conversion.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_fileManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_parserJson.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_parserJsonTools.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_strManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_timeManip.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="src/tools_trace.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_chainedList_tests/tools_chainedList_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJsonTools_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJsonTools_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_main.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_parserJson_tests/tools_parserJson_tests.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="tests/tools_strManip_tests/tools_strManip_tests.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
